@@ -1,70 +1,24 @@
-# Devbox workflow
+# Development VM model
 
-The project is developed from macOS but runs its build tooling in Ubuntu.
-The VM layer is intentionally separate from the 3D print pipeline:
+`rendekar-3d` uses `infra-config` as a submodule under `infra/infra-config`.
 
-```text
-macOS host
-  -> Multipass Ubuntu VM
-  -> mounted ~/src/rendekar-3d
-  -> Ubuntu packages + Python dependencies
-  -> OpenSCAD serial engraving smoke test
-```
+The project intentionally does not contain a devbox wrapper. Use the standard `infra-config/devbox/devbox.sh` entrypoint directly.
 
-## First setup
+## Start
 
 ```bash
-cd ~/src/rendekar-3d
-devbox/devbox.sh up
+cd ~/src/rendekar-3d/infra/infra-config
+
+devbox/devbox.sh up \
+  --name rendekar-3d-devbox \
+  --project-slug rendekar-3d \
+  --workspace ~/src/rendekar-3d
 ```
 
-This creates or starts the VM and runs:
+## Auth
 
-```bash
-bash devbox/provision-guest.sh
-```
+Use infra-config's GitHub token context mechanism. Do not copy `~/.ssh` by default.
 
-The provisioner installs:
+## Patch policy
 
-```text
-git
-make
-python3
-python3-pip
-openscad
-fonts-liberation
-fontconfig
-jq
-tree
-```
-
-Then it runs a smoke test:
-
-```bash
-python3 scripts/build-marked-artifact.py \
-  --job jobs/dino-scale-v3b-a1mini-pla-mintlime-orca.yaml \
-  --artifact-id DS-V3B-0001 \
-  --physical-mark D3B001 \
-  --render
-```
-
-Expected result:
-
-```text
-builds/dino-scale/v3b/<build-id>/marked/*D3B001_marked.stl
-builds/dino-scale/v3b/<build-id>/manifest.yaml
-```
-
-## Normal development session
-
-```bash
-devbox/devbox.sh shell
-make artifact
-make mark-render ARTIFACT=DS-V3B-0002 MARK=D3B002
-```
-
-## Notes
-
-- The printer is not required for this stage.
-- OrcaSlicer/Bambu Studio CLI installation can be added later once the serial-marked STL generation is stable.
-- Keep VM creation/provisioning here until it is mature enough to promote back into the wider `infra-config` repo.
+If a new VM behavior is needed, patch infra-config, not rendekar-3d.
