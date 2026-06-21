@@ -1,4 +1,4 @@
-[submodule "infra/infra-config"]
-	path = infra/infra-config
+[submodule "infra-config"]
+	path = infra-config
 	url = git@github.com:humit/infra-config.git
 	branch = rendekar-3d-devbox
