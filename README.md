@@ -4,6 +4,29 @@
 
 The current focus is traceable prototyping for small wearable 3D-printed parts, starting with the Dino Scale accessory series. The repository tracks model versions, slicer/build metadata, physical artifact serials, print QA results, and photos.
 
+## New machine devbox setup
+
+Use this flow on a fresh development machine.
+
+```bash
+cd ~/src
+git clone git@github.com:humit/rendekar-3d.git
+cd rendekar-3d
+git submodule update --init --recursive
+
+cd infra-config
+cp devbox/config/devbox.env{.example,}
+devbox/devbox.sh up && devbox/devbox.sh ssh
+```
+
+Expected workspace mount inside the devbox:
+
+```text
+/workspace/rendekar-3d
+```
+
+The mounted workspace must be the main `rendekar-3d` repository, not the `infra-config` submodule directory.
+
 ## Repository responsibilities
 
 This repository owns the **3D printing/product pipeline**:
