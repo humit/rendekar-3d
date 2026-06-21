@@ -56,7 +56,8 @@ difference() {{
   translate([{tx:.4f}, {ty:.4f}, {z:.4f}])
     rotate([0, 0, {rotate_deg:.4f}])
       linear_extrude(height={cut_depth:.4f})
-        text("{mark_escaped}",
+        mirror([1, 0, 0])
+          text("{mark_escaped}",
              size={size:.4f},
              font="{font_escaped}",
              halign="center",
