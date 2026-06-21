@@ -1,0 +1,57 @@
+job_id: dino-scale-v3b-a1mini-pla-mintlime-orca
+project: dino-scale
+model_version: v3b
+
+model:
+  path: models/dino-scale/v3b/dino_scale_v3b_organic_safe_23x32x3p6mm.stl
+  expected_dimensions_mm:
+    x: 23
+    y: 32
+    z: 3.6
+
+marking:
+  method: bottom_deboss
+  default_text_size_mm: 3.2
+  default_depth_mm: 0.4
+  default_font: Liberation Sans:style=Bold
+  # For long/narrow parts, orienting along Y often fits better.
+  default_rotate_deg: 90
+
+slicer:
+  name: OrcaSlicer
+  version: null
+  profile: A1 Mini 0.20 Standard
+  process:
+    layer_height_mm: 0.20
+    wall_loops: 3
+    sparse_infill_percent: 15
+    support: false
+
+printer:
+  model: Bambu Lab A1 Mini
+  nozzle_mm: 0.4
+  plate: Textured PEI
+
+filament:
+  brand: Bambu Lab
+  type: PLA Basic
+  color: Mint Lime
+  diameter_mm: 1.75
+  spool_id: bambu-pla-basic-mintlime-001
+
+expected_from_manual_orca_baseline:
+  total_time: 9m23s
+  filament_g: 1.36
+  layers: 18
+  support: false
+  warnings: []
+
+qa:
+  intended_use: first wearable dino scale prototype
+  pass_criteria:
+    - no support required
+    - serial mark readable on underside
+    - no major first-layer defect
+    - top surface acceptable
+    - edges not sharp enough to be uncomfortable
+    - part feels usable on hat/beanie

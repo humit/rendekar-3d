@@ -1,0 +1,17 @@
+# Generated slicer output
+*.gcode
+*.bgcode
+*.gcode.3mf
+
+# Temporary/cache output
+tmp/
+cache/
+exports/
+
+# Large media
+*.mp4
+*.mov
+
+# OS/editor
+.DS_Store
+*.swp
