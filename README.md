@@ -219,3 +219,5 @@ Do not reimplement devbox logic in this repository.
 If the devbox workflow needs new behavior, patch `infra-config` on its `rendekar-3d-devbox` branch, then update the submodule pointer in this repository.
 
 Do not add a local wrapper unless explicitly requested. The intended pattern is that `infra-config` remains the owner of devbox behavior and is reusable by future projects.
+
+
