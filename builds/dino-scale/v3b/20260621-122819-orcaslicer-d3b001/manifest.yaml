@@ -1,0 +1,35 @@
+build_id: 20260621-122819-orcaslicer-d3b001
+artifact_id: DS-V3B-0001
+physical_mark: D3B001
+job_file: jobs/dino-scale-v3b-a1mini-pla-mintlime-orca.yaml
+project: dino-scale
+model_version: v3b
+input_model: models/dino-scale/v3b/dino_scale_v3b_organic_safe_23x32x3p6mm.stl
+marked_stl: builds/dino-scale/v3b/20260621-122819-orcaslicer-d3b001/marked/dino_scale_v3b_organic_safe_23x32x3p6mm_D3B001_marked.stl
+generated_scad: builds/dino-scale/v3b/20260621-122819-orcaslicer-d3b001/marked/dino_scale_v3b_organic_safe_23x32x3p6mm_D3B001_marked.scad
+status: MARKED_STL_READY
+printer:
+  model: Bambu Lab A1 Mini
+  nozzle_mm: 0.4
+  plate: Textured PEI
+filament:
+  brand: Bambu Lab
+  type: PLA Basic
+  color: Mint Lime
+  diameter_mm: 1.75
+  spool_id: bambu-pla-basic-mintlime-001
+slicer:
+  name: OrcaSlicer
+  version: null
+  profile: A1 Mini 0.20 Standard
+  process:
+    layer_height_mm: 0.2
+    wall_loops: 3
+    sparse_infill_percent: 15
+    support: false
+marking:
+  method: bottom_deboss
+  default_text_size_mm: 3.2
+  default_depth_mm: 0.4
+  default_font: Liberation Sans:style=Bold
+  default_rotate_deg: 90

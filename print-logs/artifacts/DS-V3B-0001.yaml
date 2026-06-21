@@ -1,0 +1,11 @@
+artifact_id: DS-V3B-0001
+physical_mark: D3B001
+status: QA_PASS
+build_id: null
+physical_print:
+  actual_time: null
+  status: QA_PASS
+qa:
+  notes:
+  - Serial readable; first layer good.
+updated_at: '2026-06-21T09:33:16.682873+00:00'

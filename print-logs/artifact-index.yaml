@@ -1,0 +1,7 @@
+artifacts:
+  DS-V3B-0001:
+    artifact_id: DS-V3B-0001
+    build_id: null
+    log: print-logs/artifacts/DS-V3B-0001.yaml
+    physical_mark: D3B001
+    status: DRAFT
