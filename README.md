@@ -19,3 +19,23 @@ Terminology:
 First target model:
 
 - `models/dino-scale/v3b/dino_scale_v3b_organic_safe_23x32x3p6mm.stl`
+
+
+## Devbox
+
+Development is expected to happen on macOS with an Ubuntu Multipass VM.
+Create/start/provision the VM with:
+
+```bash
+devbox/devbox.sh up
+```
+
+Enter it with:
+
+```bash
+devbox/devbox.sh shell
+```
+
+The devbox installs OpenSCAD, Python tooling and fonts, then runs a smoke test that generates a serial-engraved STL before any printer is required.
+
+See `docs/devbox.md` and `devbox/README.md`.

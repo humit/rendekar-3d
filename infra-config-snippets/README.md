@@ -1,16 +1,40 @@
-# infra-config integration idea
+# infra-config integration for rendekar-3d
 
-Use infra-config to create a Linux VM/devbox, mount `~/src/rendekar-3d`, and run:
+This directory documents the intended promotion path into the user's wider `infra-config` project.
 
-```bash
-cd ~/src/rendekar-3d
-make bootstrap
+Current project-local implementation:
+
+```text
+devbox/devbox.sh
+  host-side Multipass lifecycle helper
+
+devbox/provision-guest.sh
+  guest-side Ubuntu package/environment installer
 ```
 
-Later this can become an infra-config role/task:
+Desired infra-config mapping later:
 
-- install `openscad`, `fonts-liberation`, `python3`, `pip`, `make`, `git`
-- optionally install OrcaSlicer AppImage into `/opt/orcaslicer/`
-- create `~/src/rendekar-3d`
-- run a smoke test:
-  `make mark-render ARTIFACT=DS-V3B-0001 MARK=D3B001`
+```text
+infra-config role/module:
+  rendekar_3d_devbox
+
+Responsibilities:
+  - create/start Multipass VM
+  - mount host repo into /home/ubuntu/src/rendekar-3d
+  - install OpenSCAD, Python, fonts and make tooling
+  - run serial-marking smoke test
+```
+
+Suggested VM defaults:
+
+```yaml
+name: rendekar-3d-devbox
+image: "24.04"
+cpus: 2
+memory: 4G
+disk: 30G
+host_project_dir: "~/src/rendekar-3d"
+guest_project_dir: "/home/ubuntu/src/rendekar-3d"
+```
+
+This project-local version is deliberately self-contained so the build pipeline can be prepared before the printer arrives.

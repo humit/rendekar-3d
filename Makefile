@@ -2,7 +2,7 @@ JOB ?= jobs/dino-scale-v3b-a1mini-pla-mintlime-orca.yaml
 ARTIFACT ?= DS-V3B-0001
 MARK ?= D3B001
 
-.PHONY: bootstrap artifact mark mark-render finish-pass finish-revise
+.PHONY: bootstrap artifact mark mark-render finish-pass finish-revise devbox-up devbox-shell devbox-provision devbox-stop
 
 bootstrap:
 	bash bootstrap/ubuntu-install.sh
@@ -21,3 +21,16 @@ finish-pass:
 
 finish-revise:
 	python3 scripts/finish-print.py $(ARTIFACT) --status QA_REVISE --notes "$(NOTES)"
+
+
+devbox-up:
+	bash devbox/devbox.sh up
+
+devbox-shell:
+	bash devbox/devbox.sh shell
+
+devbox-provision:
+	bash devbox/devbox.sh provision
+
+devbox-stop:
+	bash devbox/devbox.sh stop
